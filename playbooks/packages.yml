@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+    - name: Install wget package
+      package:
+        name: wget
+        state: present
+   
+    - name: Install httpd package
+      package:
+        name: httpd
+        state: present
+        
+    - name: Start web server
+      service: 
+        name: httpd
+        state: started
+        enabled: yes

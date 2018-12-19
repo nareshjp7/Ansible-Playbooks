@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+ 
+  tasks:
+    - name: Print a simple msg
+      debug:
+        msg: "Love You Swati"

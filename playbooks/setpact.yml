@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+ 
+  tasks:
+    - name: set facts for httpd package
+      set_fact:
+        packname: httpd
+    - name: print facts of https packages
+      debug:
+        msg: "{{ packname }}"

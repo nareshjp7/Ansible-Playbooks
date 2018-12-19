@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  
+  vars_files:
+    - varspkg.yml
+  tasks:
+    - name: remove httpd packages
+      package: 
+        name: "{{packname}}"
+        state: absent
+    

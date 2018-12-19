@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+    - name: Uninstall packages with loop
+      package: 
+        name: "{{item}}"
+        state: absent
+      with_items:
+        - wget
+        - httpd

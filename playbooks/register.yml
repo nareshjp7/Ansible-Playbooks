@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+    - name: "Run some command"
+      shell: ls -al
+      register: OUT
+    - name: Register in OUT
+      debug:
+        msg: "{{ OUT }}"

@@ -1,0 +1,16 @@
+---
+- hosts: 192.168.56.11
+  become: yes
+  tasks:
+    - name: Creating a Directory of SwatiDarling
+      file:
+        path: /root/SwatiDarling
+        state: directory
+   
+- hosts: 192.168.56.11
+  become: yes
+  tasks:
+    - name: Creating a directory of demo
+      file:
+        path: /root/demo
+        state: directory 

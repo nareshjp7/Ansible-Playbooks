@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: download file from url
+      get_url:
+        url: '--no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/'
+        dest: /root
+        force_basic_auth: yes
+   
+    - name: Unzip the file and move other location
+      command: tar -zxvf jdk-8u131-linux-x64.tar.gz 

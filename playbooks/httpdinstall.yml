@@ -1,0 +1,24 @@
+---
+- hosts: 192.168.56.11
+  become: yes
+  tasks:
+    - name: Install httpd packages
+      package:
+        name: httpd
+        state: latest
+    - name: Copy index.html file
+      copy:
+        src: /var/www/html
+        dest: /var/www/
+      notify:
+        - restart httpd
+    - name: Start and enabled httpd 
+      service:
+        name: httpd
+        state : restarted
+        enabled: yes
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted

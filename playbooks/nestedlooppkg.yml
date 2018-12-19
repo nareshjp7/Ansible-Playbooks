@@ -1,0 +1,13 @@
+---
+- hosts: all
+#  gather_facts: no
+  become: yes
+  
+  tasks:
+    - name: print some valuues
+      debug:
+        msg: " Package Name = {{item[0]}} , Action Name = {{item[1]}} "
+      with_nested: 
+        - [ 'httpd' , 'gcc' ]
+        - [ 'present' , 'update' , 'absent' ]
+      

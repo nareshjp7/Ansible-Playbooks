@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Execute multiple commands
+      shell: |
+        mkdir dharmatest
+        cd dharmatest
+        touch test
+        cat test >> Love you Swati

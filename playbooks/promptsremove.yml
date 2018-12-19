@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  
+  vars_prompt:
+    - name: packname
+      prompt: "enter package name..:"
+      private: no
+  tasks:
+    - name: "Remove {{ packname }} package"
+      package:
+        name: "{{ packname }}"
+        state: absent

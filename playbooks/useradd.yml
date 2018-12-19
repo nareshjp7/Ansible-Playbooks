@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Create a test user
+      user:
+        name: test
+        password: test
+        comment: test user
+        shell: /bin/bash
+        group: apache
+        createhome: yes
+        home: /home/test

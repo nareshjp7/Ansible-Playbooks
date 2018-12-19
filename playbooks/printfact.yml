@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+    - name: Collect facts of OS
+      debug:
+        msg: "OS Archi {{ansible_architecture}}"

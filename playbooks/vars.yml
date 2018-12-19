@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  
+  vars:
+    pack_name: httpd
+
+  tasks:
+    - name: Calling variables of httpd
+      package:
+        name: "{{ pack_name }}"
+        state: absent

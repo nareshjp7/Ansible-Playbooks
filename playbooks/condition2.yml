@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+
+  tasks: 
+    - name: Running a alse command
+      shell: "false"
+      register: OUT
+      ignore_errors: yes
+  
+    - name: Print rc value of OUT
+      debug:
+        msg: "{{ OUT.rc }}"
+
+    - name: applying condition
+      shell: "true"
+      when: OUT.rc == 1

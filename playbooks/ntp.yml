@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    # Obviously change this if you are not in this Rackspace datacenter (or at Rackspace at all)
+    - toplevel_timeservers: ['time.ord1.rackspace.com', 'time.ord2.rackspace.com']
+  tasks:
+    - name: Install ntp package and related pkgs
+      package:
+        name: ntp
+        state: latest
+    - name: copy over ntp configuration file
+      template: src=ntp.conf dest=/etc/ntp.conf
+      notify:
+        - restart ntp
+    - name: start and enable ntp service
+      service:
+        name: ntpd
+        state: started
+        enabled: yes
+  handlers:
+    - name: restart ntp
+      service: 
+        name: ntp
+        state: restarted 

@@ -1,0 +1,18 @@
+---
+- hosts: all
+  become: yes
+ 
+  tasks:
+   - name: Install pkgs with loop
+     package: 
+       name: "{{item}}"
+       state: present
+     with_items:
+       - wget
+       - httpd
+
+   - name: start web service
+     service:
+       name: httpd
+       state: started
+       enabled: yes
