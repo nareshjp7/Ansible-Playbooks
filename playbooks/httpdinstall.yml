@@ -8,8 +8,8 @@
         state: latest
     - name: Copy index.html file
       copy:
-        src: /var/www/html
-        dest: /var/www/
+        src: /tmp/index.html
+        dest: /var/www/html/index.html
       notify:
         - restart httpd
     - name: Start and enabled httpd 
